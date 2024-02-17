@@ -1,4 +1,5 @@
 import "~/styles/globals.css";
+import { ClerkProvider } from '@clerk/nextjs'
 
 import { Inter } from "next/font/google";
 
@@ -22,9 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
+      <ClerkProvider>
+        <body className={`font-sans ${inter.variable}`}>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
